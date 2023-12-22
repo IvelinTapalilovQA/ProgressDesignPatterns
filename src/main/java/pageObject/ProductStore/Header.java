@@ -36,6 +36,12 @@ public class Header {
     public void clickOnLoginLink(){
         driver.findElement(loginLink).click();
     }
+    public boolean isLoginLinkDisplayed(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
+        return driver.findElement(loginLink).isDisplayed();
+    }
+
     public void clickOnSignUpLink(){
         driver.findElement(signUpLink).click();
     }
@@ -53,5 +59,4 @@ public class Header {
     public void clickOnLogOutLink(){
         driver.findElement(logoutLink).click();
     }
-
 }

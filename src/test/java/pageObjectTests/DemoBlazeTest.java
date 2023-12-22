@@ -2,6 +2,7 @@ package pageObjectTests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageObject.ProductStore.*;
+
+import java.time.Duration;
 
 public class DemoBlazeTest {
 
@@ -21,12 +24,14 @@ public class DemoBlazeTest {
     static LoginModal loginModal;
     static CartPage cartPage;
     static OrderModal orderModal;
+
     @BeforeAll
     public static void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("Start-Maximized");
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         homePage = new HomePage(driver);
         header = new Header(driver);
         signUpModal = new SignUpModal(driver);
@@ -68,7 +73,7 @@ public class DemoBlazeTest {
     }
 
     @Test
-    public void testSignUp(){
+    public void testSignUp() {
 
         homePage.loadPage();
         Assertions.assertTrue(homePage.isPageLoaded());
@@ -78,7 +83,7 @@ public class DemoBlazeTest {
         Assertions.assertTrue(signUpModal.isSignUpTitleDisplayed());
         String username = generateRandomString(6, 10);
         signUpModal.enterUsername(username);
-        String randomPassword = generateRandomString(6,10);
+        String randomPassword = generateRandomString(6, 10);
         signUpModal.enterPassword(randomPassword);
         signUpModal.clickOnSignUpButton();
 
@@ -87,7 +92,7 @@ public class DemoBlazeTest {
     }
 
     @Test
-    public void testLogin(){
+    public void testLogin() {
 
         homePage.loadPage();
         Assertions.assertTrue(homePage.isPageLoaded());
@@ -101,7 +106,35 @@ public class DemoBlazeTest {
 
         Assertions.assertTrue(header.isUserWelcomeLinkDisplayed());
     }
-    public String generateRandomString(int minLengthInclusive, int maxLengthInclusive){
+
+    @Test
+    public void testLogOut() {
+
+        homePage.loadPage();
+        homePage.isPageLoaded();
+
+        header.clickOnLoginLink();
+
+        Assertions.assertTrue(loginModal.isLoginTitleDisplayed());
+        loginModal.enterUsername("testacc143");
+        loginModal.enterPassword("Testacc143");
+        loginModal.clickOnLoginButton();
+
+        Assertions.assertTrue(header.isUserWelcomeLinkDisplayed());
+        header.clickOnLogOutLink();
+        Assertions.assertTrue(header.isLoginLinkDisplayed());
+
+
+    }
+
+    public String generateRandomString(int minLengthInclusive, int maxLengthInclusive) {
         return RandomStringUtils.randomAlphanumeric(minLengthInclusive, maxLengthInclusive);
+    }
+
+    @AfterAll
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

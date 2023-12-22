@@ -19,7 +19,7 @@ public class LoginModal {
     //Actions methods
 
     public boolean isLoginTitleDisplayed(){
-        return driver.findElement(loginButton).isDisplayed();
+        return driver.findElement(loginModalTitle).isDisplayed();
     }
     public void enterUsername(String username){
         driver.findElement(usernameField).sendKeys(username);
