@@ -123,8 +123,6 @@ public class DemoBlazeTest {
         Assertions.assertTrue(header.isUserWelcomeLinkDisplayed());
         header.clickOnLogOutLink();
         Assertions.assertTrue(header.isLoginLinkDisplayed());
-
-
     }
 
     public String generateRandomString(int minLengthInclusive, int maxLengthInclusive) {
@@ -132,7 +130,7 @@ public class DemoBlazeTest {
     }
 
     @AfterAll
-    public void teardown() {
+    public static void teardown() {
         if (driver != null) {
             driver.quit();
         }

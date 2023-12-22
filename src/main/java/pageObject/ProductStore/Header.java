@@ -10,10 +10,12 @@ import java.time.Duration;
 public class Header {
 
     WebDriver driver;
-
+    WebDriverWait wait;
     public Header (WebDriver driver){
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
+
     //Locators
     private final By homeLink = By.xpath("//a[text()='Home ']");
     private final By contactLink = By.xpath("//a[text()='Contact']");
@@ -37,11 +39,9 @@ public class Header {
         driver.findElement(loginLink).click();
     }
     public boolean isLoginLinkDisplayed(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink));
         return driver.findElement(loginLink).isDisplayed();
     }
-
     public void clickOnSignUpLink(){
         driver.findElement(signUpLink).click();
     }
@@ -49,7 +49,6 @@ public class Header {
         driver.findElement(userAccLink).click();
     }
     public boolean isUserWelcomeLinkDisplayed(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(userAccLink));
         return driver.findElement(userAccLink).isDisplayed();
     }

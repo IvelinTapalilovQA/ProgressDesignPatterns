@@ -11,9 +11,11 @@ import java.time.Duration;
 public class OrderModal {
 
     WebDriver driver;
+    WebDriverWait wait;
 
     public OrderModal(WebDriver driver){
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
     //locator
     private final By orderModalTitle = By.id("orderModalLabel");
@@ -24,7 +26,6 @@ public class OrderModal {
     private final By monthField = By.id("month");
     private final By yearField = By.id("year");
     private final By purchaseButton = By.xpath("//button[@onclick='purchaseOrder()']");
-
     private final By finishedOrderWindowButton = By.xpath("//button[@class='confirm btn btn-lg btn-primary']");
     private final By finishOrderWindowTitle = By.xpath("//div[@class='sweet-alert  showSweetAlert visible']/h2");
     //Action Method
@@ -54,12 +55,10 @@ public class OrderModal {
         driver.findElement(purchaseButton).click();
     }
     public String getOrderAlertText(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(finishOrderWindowTitle));
         return driver.findElement(finishOrderWindowTitle).getText();
     }
     public void clickOnFinishedOrderWindowButton(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(finishedOrderWindowButton));
         driver.findElement(finishedOrderWindowButton).click();
     }

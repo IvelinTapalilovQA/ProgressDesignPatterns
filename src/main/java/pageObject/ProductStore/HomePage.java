@@ -13,10 +13,12 @@ import java.util.List;
 public class HomePage {
 
     WebDriver driver;
-
+    WebDriverWait wait;
     private final String PAGE_URL = "https://www.demoblaze.com/index.html";
+
     public HomePage(WebDriver driver){
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     private final By categoriesLocator = By.id("itemc");
@@ -31,12 +33,10 @@ public class HomePage {
     }
 
     public boolean isPageLoaded(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.urlToBe(PAGE_URL));
     }
 
     public void choiceCategory(String targetCategory){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(categoriesLocator));
         List<WebElement> categories = driver.findElements(categoriesLocator);
         for (WebElement category : categories){
@@ -47,7 +47,6 @@ public class HomePage {
     }
 
     public void choiceItem(int index){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(itemLocator));
         List<WebElement> itemsList = driver.findElements(itemLocator);
         WebElement item = itemsList.get(index);
@@ -55,7 +54,6 @@ public class HomePage {
     }
 
     public void addToCartButton(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(addToCardLocator));
         driver.findElement(addToCardLocator).click();
     }
