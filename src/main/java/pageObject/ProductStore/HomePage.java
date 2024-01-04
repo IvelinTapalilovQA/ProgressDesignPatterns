@@ -22,12 +22,9 @@ public class HomePage {
     }
 
     private final By categoriesLocator = By.id("itemc");
-
-    private final By nextPageButton = By.id("next2");
-    private final By previusPageButton = By.id("prev2");
     private final By itemLocator = By.xpath("//a[@class='hrefch']");
-
     private final By addToCardLocator = By.xpath("//a[@class='btn btn-success btn-lg']");
+
     public void loadPage(){
         driver.get(PAGE_URL);
     }

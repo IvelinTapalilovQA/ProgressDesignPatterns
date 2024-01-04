@@ -18,7 +18,6 @@ public class SignUpModal {
     private final By signUpButton = By.xpath("//button[text()='Sign up']");
 
     //Action Methods
-
     public boolean isSignUpTitleDisplayed(){
         return driver.findElement(signUpTitle).isDisplayed();
     }
@@ -31,5 +30,4 @@ public class SignUpModal {
     public void clickOnSignUpButton(){
         driver.findElement(signUpButton).click();
     }
-
 }

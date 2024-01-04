@@ -19,9 +19,11 @@ public class CartPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
+    //Locators
     private final By addedProduct = By.xpath("//tr[@class='success']/td[2]");
     private final By placeOrderButton = By.xpath("//button[@class='btn btn-success']");
 
+    //Action Methods
     public String getAddedProductByIndex(int index){
         wait.until(ExpectedConditions.visibilityOfElementLocated(addedProduct));
         List<WebElement> addedProducts = driver.findElements(addedProduct);

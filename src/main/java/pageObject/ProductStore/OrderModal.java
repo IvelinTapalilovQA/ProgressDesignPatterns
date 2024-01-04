@@ -17,7 +17,7 @@ public class OrderModal {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
-    //locator
+    //Locators
     private final By orderModalTitle = By.id("orderModalLabel");
     private final By nameField = By.id("name");
     private final By countryField = By.id("country");
@@ -28,8 +28,8 @@ public class OrderModal {
     private final By purchaseButton = By.xpath("//button[@onclick='purchaseOrder()']");
     private final By finishedOrderWindowButton = By.xpath("//button[@class='confirm btn btn-lg btn-primary']");
     private final By finishOrderWindowTitle = By.xpath("//div[@class='sweet-alert  showSweetAlert visible']/h2");
-    //Action Method
 
+    //Action Method
     public boolean isOrderModalTitleDisplayed(){
         return driver.findElement(orderModalTitle).isDisplayed();
     }

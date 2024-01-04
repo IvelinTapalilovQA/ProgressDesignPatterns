@@ -11,6 +11,7 @@ public class LoginModal {
         this.driver = driver;
     }
     //Locators
+
     private final By loginModalTitle = By.id("logInModalLabel");
     private final By usernameField = By.id("loginusername");
     private final By passwordField = By.id("loginpassword");
