@@ -1,4 +1,4 @@
-package pageObject.ProductStore;
+package pageObject.DemoBlazeStore;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
