@@ -69,8 +69,6 @@ public class BookStoreBaseSixEight {
         header.clickOnItemPriceMenu();
         Assertions.assertEquals(driver.getCurrentUrl(), "https://practice.automationtesting.in/basket/");
         Assertions.assertTrue(basketPage.isCheckOutButtonDisplayed());
-
-
     }
 
     @AfterAll
