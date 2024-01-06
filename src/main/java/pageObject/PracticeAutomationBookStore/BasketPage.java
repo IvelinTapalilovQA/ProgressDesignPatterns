@@ -17,9 +17,35 @@ public class BasketPage {
     @FindBy(css = "a.checkout-button")
     WebElement checkOutButton;
 
+    @FindBy(id = "coupon_code")
+    WebElement couponInput;
+
+    @FindBy(name = "apply_coupon")
+    WebElement applyCouponButton;
+
+    @FindBy(css = "tr.cart-discount")
+    WebElement couponDiscountSection;
+
+    @FindBy(css = "div.woocommerce-message")
+    WebElement couponAppliedMessage;
+
     public boolean isCheckOutButtonDisplayed(){
         return checkOutButton.isDisplayed();
     }
 
+    public void enterCouponCode(String couponCode){
+        couponInput.sendKeys(couponCode);
+    }
 
+    public void clickOnApplyCouponButton(){
+        applyCouponButton.click();
+    }
+
+    public String getCouponDiscountSectionText() {
+       return couponDiscountSection.getText();
+    }
+
+    public String getCouponAppliedMessage(){
+        return couponAppliedMessage.getText();
+    }
 }
