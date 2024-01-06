@@ -9,11 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageObject.PracticeAutomationBookStore.*;
-import org.openqa.selenium.JavascriptExecutor;
 
 import java.time.Duration;
 
-public class BookStoreBaseFourFive {
+public class BookStoreBaseSixEight {
 
     static WebDriver driver;
     static Header header;
@@ -21,6 +20,7 @@ public class BookStoreBaseFourFive {
     static PersonalDataModal personalDataModal;
     static ProductPage productPage;
     static ShopPage shopPage;
+    static BasketPage basketPage;
 
     @BeforeAll
     public static void setup() {
@@ -34,9 +34,10 @@ public class BookStoreBaseFourFive {
         personalDataModal = new PersonalDataModal(driver);
         productPage = new ProductPage(driver);
         shopPage = new ShopPage(driver);
+        basketPage = new BasketPage(driver);
     }
 
-//    Test case 4&5 - Homepage - Arrivals - Images - Reviews - Description
+//    Test case 6&8 - Homepage - Arrivals - Add to basket - Item
 //    1) Open the browser
 //    2) Enter the URL “http://practice.automationtesting.in/”
 //    3) Click on Shop Menu
@@ -46,13 +47,13 @@ public class BookStoreBaseFourFive {
 //    7) Now click the image in the Arrivals
 //    8) Test whether it is navigating to next page where the user can add that book into his basket.
 //    9) Image should be clickable and should navigate to next page where user can add that book to his basket
-//    10) Now clock on Reviews tab for the book you clicked on.
-//    11) There should be a Reviews regarding that book the user clicked on
-//    12) Click on Description tab for the book you clicked on.
-//    13) There should be a description regarding that book the user clicked on
+//    10)Click on the Add To Basket button which adds that book to your basket
+//    11) User can view that Book in the Menu item with price.
+//    12) Now click on Item link which navigates to proceed to check out page.
+//    13) User can click on the Item link in menu item after adding the book in to the basket which leads to the check-out page
 
     @Test
-    public void testArrivalsReviewsDescription() {
+    public void testArrivalsAddToBasketItem() {
 
         homePage.loadPage();
         personalDataModal.clickOnCancelButton();
@@ -62,21 +63,12 @@ public class BookStoreBaseFourFive {
         homePage.clickOnArrivalImage(0);
         Assertions.assertEquals(driver.getCurrentUrl(), ("https://practice.automationtesting.in/product/selenium-ruby/"));
         Assertions.assertTrue(productPage.isAddToBasketButtonDisplayed());
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,450)", "");
-
-        productPage.clickOnReviewsTab();
-        Assertions.assertEquals("Reviews\n" +
-                "There are no reviews yet." ,productPage.getReviewsSectionText());
-        productPage.clickOnDescriptionTab();
-        Assertions.assertEquals("Product Description\n" +
-                "The Selenium WebDriver Recipes book is a quick " +
-                "problem-solving guide to automated testing web " +
-                "applications with Selenium WebDriver. It contains " +
-                "hundreds of solutions to real-world problems, with clear" +
-                " explanations and ready-to-run test scripts you can use " +
-                "in your own projects.", productPage.getProductDescription());
+        productPage.clickOnAddToBasketButton();
+        Assertions.assertTrue(header.isItemPriceMenuDisplayed());
+        Assertions.assertEquals("1 Item₹500.00", header.getItemPriceMenuText());
+        header.clickOnItemPriceMenu();
+        Assertions.assertEquals(driver.getCurrentUrl(), "https://practice.automationtesting.in/basket/");
+        Assertions.assertTrue(basketPage.isCheckOutButtonDisplayed());
     }
 
     @AfterAll

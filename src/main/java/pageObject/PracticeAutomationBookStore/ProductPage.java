@@ -51,4 +51,8 @@ public class ProductPage {
     public boolean isAddToBasketButtonDisplayed(){
         return addToBasketButton.isDisplayed();
     }
+
+    public void clickOnAddToBasketButton(){
+        addToBasketButton.click();
+    }
 }

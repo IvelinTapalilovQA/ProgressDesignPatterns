@@ -18,8 +18,25 @@ public class Header {
     @FindBy(linkText = "Shop")
     WebElement shopButton;
 
+    @FindBy(id = "wpmenucartli")
+    WebElement itemPriceMenu;
+
     //Action Methods
     public void clickOnShopButton(){
         shopButton.click();
     }
+
+    public boolean isItemPriceMenuDisplayed(){
+        return itemPriceMenu.isDisplayed();
+    }
+
+    public String getItemPriceMenuText(){
+        return itemPriceMenu.getText();
+    }
+
+    public void clickOnItemPriceMenu(){
+        itemPriceMenu.click();
+    }
+
+
 }
