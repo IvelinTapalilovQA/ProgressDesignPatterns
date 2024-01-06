@@ -10,6 +10,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageObject.PracticeAutomationBookStore.*;
 import org.openqa.selenium.JavascriptExecutor;
+
+import java.time.Duration;
+
 public class BookStoreBaseFourFive {
 
     static WebDriver driver;
@@ -25,6 +28,7 @@ public class BookStoreBaseFourFive {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("Start-Maximized");
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         header = new Header(driver);
         homePage = new HomePage(driver);
         personalDataModal = new PersonalDataModal(driver);
@@ -57,9 +61,10 @@ public class BookStoreBaseFourFive {
         Assertions.assertEquals(3, homePage.getCountNewArrivals());
         homePage.clickOnArrivalImage(0);
         Assertions.assertEquals(driver.getCurrentUrl(), ("https://practice.automationtesting.in/product/selenium-ruby/"));
+        Assertions.assertTrue(productPage.isAddToBasketButtonDisplayed());
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,550)", "");
+        js.executeScript("window.scrollBy(0,450)", "");
 
         productPage.clickOnReviewsTab();
         Assertions.assertEquals("Reviews\n" +

@@ -28,6 +28,9 @@ public class ProductPage {
     @FindBy(css = "div#comments")
     WebElement reviewSection;
 
+    @FindBy(css = "button.single_add_to_cart_button")
+    WebElement addToBasketButton;
+
     //Action Methods
     public String getProductDescription(){
         return productDescription.getText();
@@ -43,5 +46,9 @@ public class ProductPage {
 
     public String getReviewsSectionText(){
         return reviewSection.getText();
+    }
+
+    public boolean isAddToBasketButtonDisplayed(){
+        return addToBasketButton.isDisplayed();
     }
 }
