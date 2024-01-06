@@ -41,7 +41,7 @@ public class ProductPage {
         descriptionTab.click();
     }
 
-    public String getReviewSectionText(){
+    public String getReviewsSectionText(){
         return reviewSection.getText();
     }
 }

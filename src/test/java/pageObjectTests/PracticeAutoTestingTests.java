@@ -32,7 +32,7 @@ public class PracticeAutoTestingTests {
         shopPage = new ShopPage(driver);
     }
 
-//    Test case 5&6 - Homepage - Arrivals - Images - Reviews - Description
+//    Test case 4&5 - Homepage - Arrivals - Images - Reviews - Description
 //    1) Open the browser
 //    2) Enter the URL “http://practice.automationtesting.in/”
 //    3) Click on Shop Menu
@@ -63,7 +63,7 @@ public class PracticeAutoTestingTests {
 
         productPage.clickOnReviewsTab();
         Assertions.assertEquals("Reviews\n" +
-                "There are no reviews yet." ,productPage.getReviewSectionText());
+                "There are no reviews yet." ,productPage.getReviewsSectionText());
         productPage.clickOnDescriptionTab();
         Assertions.assertEquals("Product Description\n" +
                 "The Selenium WebDriver Recipes book is a quick " +
