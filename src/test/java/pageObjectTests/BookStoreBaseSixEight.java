@@ -47,7 +47,7 @@ public class BookStoreBaseSixEight {
 //    7) Now click the image in the Arrivals
 //    8) Test whether it is navigating to next page where the user can add that book into his basket.
 //    9) Image should be clickable and should navigate to next page where user can add that book to his basket
-//    10)Click on the Add To Basket button which adds that book to your basket
+//    10) Click on the Add To Basket button which adds that book to your basket
 //    11) User can view that Book in the Menu item with price.
 //    12) Now click on Item link which navigates to proceed to check out page.
 //    13) User can click on the Item link in menu item after adding the book in to the basket which leads to the check-out page
