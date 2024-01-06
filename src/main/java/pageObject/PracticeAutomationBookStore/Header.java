@@ -1,25 +1,25 @@
-package pageObject.PracticeAutomationTesting;
+package pageObject.PracticeAutomationBookStore;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ShopPage {
+public class Header {
 
     WebDriver driver;
 
-    public ShopPage(WebDriver driver){
+    public Header(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     //Locators
-    @FindBy(linkText = "Home")
-    WebElement homeButton;
+    @FindBy(linkText = "Shop")
+    WebElement shopButton;
 
     //Action Methods
-    public void clickOnHomeButton(){
-        homeButton.click();
+    public void clickOnShopButton(){
+        shopButton.click();
     }
 }
