@@ -26,6 +26,12 @@ public class BasketPage {
     @FindBy(css = "tr.cart-discount")
     WebElement couponDiscountSection;
 
+    @FindBy(css = "tr.cart-subtotal span.woocommerce-Price-amount.amount")
+    WebElement subtotalAmountSection;
+
+    @FindBy(xpath = "//tr[@class='order-total']/td/strong/span")
+    WebElement totalAmountSection;
+
     @FindBy(css = "div.woocommerce-message")
     WebElement couponAppliedMessage;
 
@@ -47,5 +53,20 @@ public class BasketPage {
 
     public String getCouponAppliedMessage(){
         return couponAppliedMessage.getText();
+    }
+
+    public Integer getSubtotalAmount(){
+        String subtotalAmount = subtotalAmountSection.getText().substring(1, 4);
+        return Integer.parseInt(subtotalAmount);
+
+    }
+
+    public Integer getTotalAmount(){
+        String totalAmount = totalAmountSection.getText().substring(1, 4);
+        return  Integer.parseInt(totalAmount);
+    }
+
+    public void clickOnCheckOutButton(){
+        checkOutButton.click();
     }
 }

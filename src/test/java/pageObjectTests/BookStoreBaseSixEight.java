@@ -61,13 +61,13 @@ public class BookStoreBaseSixEight {
         shopPage.clickOnHomeButton();
         Assertions.assertEquals(3, homePage.getCountNewArrivals());
         homePage.clickOnArrivalImage(0);
-        Assertions.assertEquals(driver.getCurrentUrl(), ("https://practice.automationtesting.in/product/selenium-ruby/"));
+        Assertions.assertEquals("https://practice.automationtesting.in/product/selenium-ruby/", driver.getCurrentUrl());
         Assertions.assertTrue(productPage.isAddToBasketButtonDisplayed());
         productPage.clickOnAddToBasketButton();
         Assertions.assertTrue(header.isItemPriceMenuDisplayed());
         Assertions.assertEquals("1 Item₹500.00", header.getItemPriceMenuText());
         header.clickOnItemPriceMenu();
-        Assertions.assertEquals(driver.getCurrentUrl(), "https://practice.automationtesting.in/basket/");
+        Assertions.assertEquals("https://practice.automationtesting.in/basket/", driver.getCurrentUrl());
         Assertions.assertTrue(basketPage.isCheckOutButtonDisplayed());
     }
 

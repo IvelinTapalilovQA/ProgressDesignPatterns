@@ -47,12 +47,12 @@ public class BookStoreBaseNine {
 //    7) Now click the image in the Arrivals
 //    8) Test whether it is navigating to next page where the user can add that book into his basket.
 //    9) Image should be clickable and should navigate to next page where user can add that book to his basket
-//      10) Click on the Add To Basket button which adds that book to your basket
-//      11) User can view that Book in the Menu item with price.
-//      12) Now click on Item link which navigates to proceed to check out page.
-//      13) User can click on the Item link in menu item after adding the book in to the basket which leads to the check-out page
-//      14) Enter the Coupon code as ‘krishnasakinala’ to get 50rps off on the total.
-//      15) User can apply coupon by entering ‘krishnasakinala’ in the coupon text box which give 50rps off on the total price
+//    10) Click on the Add To Basket button which adds that book to your basket
+//    11) User can view that Book in the Menu item with price.
+//    12) Now click on Item link which navigates to proceed to check out page.
+//    13) User can click on the Item link in menu item after adding the book in to the basket which leads to the check-out page
+//    14) Enter the Coupon code as ‘krishnasakinala’ to get 50rps off on the total.
+//    15) User can apply coupon by entering ‘krishnasakinala’ in the coupon text box which give 50rps off on the total price
 
     @Test
     public void testArrivalsAddToBasketItemCoupon() {
@@ -63,13 +63,13 @@ public class BookStoreBaseNine {
         shopPage.clickOnHomeButton();
         Assertions.assertEquals(3, homePage.getCountNewArrivals());
         homePage.clickOnArrivalImage(0);
-        Assertions.assertEquals(driver.getCurrentUrl(), ("https://practice.automationtesting.in/product/selenium-ruby/"));
+        Assertions.assertEquals("https://practice.automationtesting.in/product/selenium-ruby/", driver.getCurrentUrl());
         Assertions.assertTrue(productPage.isAddToBasketButtonDisplayed());
         productPage.clickOnAddToBasketButton();
         Assertions.assertTrue(header.isItemPriceMenuDisplayed());
         Assertions.assertEquals("1 Item₹500.00", header.getItemPriceMenuText());
         header.clickOnItemPriceMenu();
-        Assertions.assertEquals(driver.getCurrentUrl(), "https://practice.automationtesting.in/basket/");
+        Assertions.assertEquals("https://practice.automationtesting.in/basket/", driver.getCurrentUrl());
         Assertions.assertTrue(basketPage.isCheckOutButtonDisplayed());
         basketPage.enterCouponCode("krishnasakinala");
         basketPage.clickOnApplyCouponButton();

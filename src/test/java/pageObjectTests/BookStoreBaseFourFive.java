@@ -60,7 +60,7 @@ public class BookStoreBaseFourFive {
         shopPage.clickOnHomeButton();
         Assertions.assertEquals(3, homePage.getCountNewArrivals());
         homePage.clickOnArrivalImage(0);
-        Assertions.assertEquals(driver.getCurrentUrl(), ("https://practice.automationtesting.in/product/selenium-ruby/"));
+        Assertions.assertEquals("https://practice.automationtesting.in/product/selenium-ruby/", driver.getCurrentUrl());
         Assertions.assertTrue(productPage.isAddToBasketButtonDisplayed());
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
